@@ -1,0 +1,94 @@
+{
+    "about": {
+        "type": "TEC Breakout Space",
+        "version": "v1.0.0",
+        "created": "JB CAV 10/8/2022"
+    },
+    
+    "adapters": [
+    {
+        "model": "GenericNetworkAdapter",
+        "ip": "tcp://172.16.210.20:1702", 
+        "ports": [
+        {
+            "id": "qsys_core", 
+            "name": "Q-SYS Core",
+            "methods": [
+            {
+                "id": "PresentationState",
+                "name": "Presentation",
+                "command": "csv Presentation %\r\n", 
+                "params": [ 
+                {
+                    "id": "on", 
+                    "name": "On",
+                    "value": "1"
+                },
+                {
+                    "id": "off",  
+                    "name": "Off",
+                    "value": "0"
+                }
+                ],
+                "type": "actions"
+            },
+
+            {
+                "id": "MicMute",
+                "name": "PA Microphone Mute",
+                "command": "csv MicMute %\r\n", 
+                "params": [ 
+                {
+                    "id": "on", 
+                    "name": "On",
+                    "value": "1"
+                },
+                {
+                    "id": "off",  
+                    "name": "Off",
+                    "value": "0"
+                }
+                ],
+                "type": "actions"
+            },
+
+            {
+                "id": "InCall",
+                "name": "In Call",
+                "command": "csv InCall %\r\n", 
+                "params": [ 
+                {
+                    "id": "on", 
+                    "name": "On",
+                    "value": "1"
+                },
+                {
+                    "id": "off",  
+                    "name": "Off",
+                    "value": "0"
+                }
+                ],
+                "type": "actions"
+            },
+              
+            ]
+          }
+        ]
+      }
+    ],
+    "styles": [
+        "qsys_core.icon=icon_rack_equipment",
+        "qsys_core.PresentationState.icon=icon_power",
+        "qsys_core.MicMute.icon=icon_speakerphone",
+        "qsys_core.InCall.invisible=true"
+    ],
+    "rules":
+    {
+        "meeting_started": [
+          "qsys_core.InCall.on"
+        ],
+        "meeting_ended": [
+          "qsys_core.InCall.off"
+        ],
+    }
+  }

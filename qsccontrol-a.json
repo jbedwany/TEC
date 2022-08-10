@@ -1,0 +1,200 @@
+{
+    "about": {
+        "type": "TEC Breakout Space",
+        "version": "v1.0.0",
+        "created": "JB CAV 10/8/2022"
+    },
+    
+    "adapters": [
+    {
+        "model": "GenericNetworkAdapter",
+        "ip": "tcp://172.16.210.20:1702", 
+        "ports": [
+        {
+            "id": "qsys_core", 
+            "name": "Q-SYS Core",
+            "methods": [
+            {
+                "id": "SystemOverride",
+                "name": "Projector Mode",
+                "command": "csv SystemOverride %\r\n", 
+                "params": [ 
+                {
+                    "id": "on", 
+                    "name": "On",
+                    "value": "1"
+                },
+                {
+                    "id": "off",  
+                    "name": "Off",
+                    "value": "0"
+                }
+                ],
+                "type": "actions"
+            },
+
+            {
+                "id": "InCall",
+                "name": "In Call",
+                "command": "csv InCall %\r\n", 
+                "params": [ 
+                {
+                    "id": "on", 
+                    "name": "On",
+                    "value": "1"
+                },
+                {
+                    "id": "off",  
+                    "name": "Off",
+                    "value": "0"
+                }
+                ],
+                "type": "actions"
+            },
+
+            {
+                "id": "HH1",
+                "name": "Handheld 1 Volume",
+                "command": "ssl HH1 %\r 1\n", 
+                "params": [ 
+                  {
+                    "id": "low", 
+                    "name": "Low",
+                    "value": "1"
+                  },
+                  {
+                    "id": "med",  
+                    "name": "Medium",
+                    "value": "2"
+                  },
+                  {
+                    "id": "high",  
+                    "name": "High",
+                    "value": "3"
+                  }
+                ],
+                "type": "actions"
+            },
+
+            {
+                "id": "HH2",
+                "name": "Handheld 2 Volume",
+                "command": "ssl HH2 %\r 1\n", 
+                "params": [ 
+                  {
+                    "id": "low", 
+                    "name": "Low",
+                    "value": "1"
+                  },
+                  {
+                    "id": "med",  
+                    "name": "Medium",
+                    "value": "2"
+                  },
+                  {
+                    "id": "high",  
+                    "name": "High",
+                    "value": "3"
+                  }
+                ],
+                "type": "actions"
+            },
+
+
+            {
+                "id": "Lapel1",
+                "name": "Lapel 1 Volume",
+                "command": "ssl Lapel1 %\r 1\n", 
+                "params": [ 
+                  {
+                    "id": "low", 
+                    "name": "Low",
+                    "value": "1"
+                  },
+                  {
+                    "id": "med",  
+                    "name": "Medium",
+                    "value": "2"
+                  },
+                  {
+                    "id": "high",  
+                    "name": "High",
+                    "value": "3"
+                  }
+                ],
+                "type": "actions"
+            },
+
+
+            {
+                "id": "Lapel2",
+                "name": "Lapel 2 Volume",
+                "command": "ssl Lapel2 %\r 1\n", 
+                "params": [ 
+                  {
+                    "id": "low", 
+                    "name": "Low",
+                    "value": "1"
+                  },
+                  {
+                    "id": "med",  
+                    "name": "Medium",
+                    "value": "2"
+                  },
+                  {
+                    "id": "high",  
+                    "name": "High",
+                    "value": "3"
+                  }
+                ],
+                "type": "actions"
+            },
+
+            {
+                "id": "Aux",
+                "name": "Aux Volume",
+                "command": "ssl Aux %\r 1\n", 
+                "params": [ 
+                  {
+                    "id": "low", 
+                    "name": "Low",
+                    "value": "1"
+                  },
+                  {
+                    "id": "med",  
+                    "name": "Medium",
+                    "value": "2"
+                  },
+                  {
+                    "id": "high",  
+                    "name": "High",
+                    "value": "3"
+                  }
+                ],
+                "type": "actions"
+            }
+            ]
+          }
+        ]
+    }
+    ],
+    "styles": [
+        "qsys_core.icon=icon_rack_equipment",
+        "qsys_core.SystemOverride.icon=icon_power",
+        "qsys_core.HH1.icon=icon_speakerphone",
+        "qsys_core.HH2.icon=icon_speakerphone",
+        "qsys_core.Lapel1.icon=icon_speakerphone",
+        "qsys_core.Lapel2.icon=icon_speakerphone",
+        "qsys_core.Aux.icon=icon_speakerphone",
+        "qsys_core.InCall.invisible=true"
+    ],
+    "rules":
+    {
+        "meeting_started": [
+          "qsys_core.InCall.on"
+        ],
+        "meeting_ended": [
+          "qsys_core.InCall.off"
+        ]
+    }
+  }
